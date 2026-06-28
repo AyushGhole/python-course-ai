@@ -108,7 +108,189 @@ class Teacher(Employee):
   def __init__(self, subject):
     self.subject=subject 
 
+# t1=Teacher("Maths") 
+# t1.change_endTime("5pm") 
+# print(t1.start_time, t1.end_time)
 
-t1=Teacher("Maths") 
-t1.change_endTime("5pm") 
-print(t1.start_time, t1.end_time)
+class Teacher:
+  def __init__(self, salary): 
+    self.salary=salary 
+   
+class Student:
+  def __init__(self,gpa):
+    self.gpa=gpa 
+    
+class TA(Teacher, Student):
+  def __init__(self, salary, gpa,name):
+    super().__init__(salary)
+    Student.__init__(self,gpa) 
+    self.name=name 
+
+ta=TA(15_000,9.3,"Ayush")
+# print(ta.name, ta.gpa, ta.salary)
+
+# Abstraction 
+from abc import ABC , abstractmethod 
+
+class Animal(ABC):
+  @abstractmethod
+  def make_sound(self):
+    pass 
+
+class Lion(Animal):
+  def make_sound(self):
+    print("Roar") 
+
+class Cow(Animal):
+  def make_sound(self):
+    print("Meow") 
+
+lion=Lion() 
+# lion.make_sound() 
+
+cow=Cow() 
+# cow.make_sound() 
+
+#Polymorphism  
+class Teacher:
+  def get_designation(self):
+    print("Desination=Teacher") 
+
+class Account:
+  def get_designation(self):
+    print("Desination=Accountant") 
+  
+t1=Teacher() 
+# t1.get_designation() 
+
+acc1=Account() 
+# acc1.get_designation()
+
+#Assignment
+#Problem 1
+# class Bank_Account:
+#   def __init__(self,acc_number,owner_name,balance):
+#     self.acc_number=acc_number 
+#     self.owner_name=owner_name 
+#     self.balance=balance 
+
+#   def deposit(self,dep):
+#     self.balance=self.balance+dep
+ 
+#   def withdraw(self,wtd):
+#     self.balance=self.balance-wtd
+ 
+#   def get_balnc(self):
+#     print(f"Balance: {self.balance}")
+
+# own=Bank_Account("00091819","Ayush", 25_000)
+# own.deposit(13000)
+# own.withdraw(20000)
+# own.get_balnc()
+ 
+#Problem 2 
+# class Book:
+#   count=0
+
+#   def __init__(self,author,title):
+#     self.title=title 
+#     self.__author=author 
+#     self.reviews=[] 
+   
+#   def set(self,newAuthor):
+#     self.__author=newAuthor 
+#     return print("Auther Set Successfully!")
+
+
+#   def get(self):
+#     return self.__author 
+
+#   def addReviews(self, newReviews):
+#     self.reviews.append(newReviews) 
+#     print("Review counted successfully")
+#     Book.count= Book.count+1 
+  
+#   def get_reviews(self):
+#     return self.reviews
+
+#   @classmethod
+#   def get_count(cls):
+#     return cls.count
+
+# bk=Book("Ayush","Hell")
+# bk.addReviews("Excellent")
+# bk.addReviews("Good")
+# bk.addReviews("Very Good")
+# print("Title: ",bk.title)
+# print("Author: ",bk.get()) 
+# print("Reviews: ",bk.get_reviews())
+# print("Count:",bk.get_count()) 
+
+
+#Problem 3 
+# class Student:
+#   def __init__(self):
+#     self.__name=None
+#     self.__roll=None
+#     self.__marks=None
+
+#   def set_marks(self,newMarks):
+#     if(newMarks>0):
+#       self.__marks=newMarks 
+#       print("Marks Added Successfully!!")
+#       return self.__marks
+#     else:
+#       return print("Invalid Marks!") 
+
+#   def set_name(self,newName):
+#     if(newName == None):
+#       return print("Name cannot be empty!")
+#     else :
+#       self.__name=newName
+#       print("Name Added Successfully!!")   
+#       return self.__name 
+    
+#   def set_roll(self,newRoll):
+#     if(newRoll>=1 and newRoll <=100):
+#       self.__roll=newRoll
+#       print("Roll No Added Successfully!!")   
+#       return self.__roll
+#     else :
+#       return print("Invalid Roll Number.")
+
+#   def get_info(self):
+#     return f"Name: {self.__name} has Roll No: {self.__roll} & Marks: {self.__marks}"
+  
+# std=Student()
+# std.set_name("Ayush") 
+# std.set_roll(115)
+# std.set_marks(67) 
+
+# print(std.get_info())
+
+
+#Problem 4 
+# class rectangle:
+#   def __init__(self, length, breadth): 
+#     self.area=length*breadth  
+#     return print(f"Area: {self.area}")
+
+# class circle:
+#   def __init__(self,radius):
+#     self.area=radius*radius*3.14
+#     return print(f"Area: {self.area}") 
+  
+# class triangle:
+#   def __init__(self,base, height):
+#     self.area=0.5 * base* height 
+#     return print(f"Area: {self.area}")
+  
+# class Shape(rectangle, circle, triangle):
+#   def __init__(self, length, breadth, radius, base, height):
+#     super().__init__(length, breadth)
+#     circle.__init__(self,radius) 
+#     triangle.__init__(self,base, height)
+ 
+# Shape(3,5,6,7,8)
+
+#Problem 5 
